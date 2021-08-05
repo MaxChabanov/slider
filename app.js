@@ -10,6 +10,8 @@ let bannerContent = document.querySelector(".row");
 let blockPaginationItemsArray = document.querySelectorAll(
   ".block-pagination-item"
 );
+let dotPaginationItemsArray = document.querySelectorAll(".dot-pagination-item");
+let dotPaginationContainer = document.querySelector(".dot-pagination");
 
 let slide = 1;
 function nextSlide(event) {
@@ -22,21 +24,22 @@ function previousSlide(event) {
 }
 
 function playSlideAnimation(event) {
-  bannerContent.style.animation = "slide-right 0.4s linear";
+  bannerContent.style.animation = "slide-right 0.7s ease";
+
   setTimeout(() => {
     checkSlideNumber(event);
-
-    bannerContent.style.animation = "slide-right-left-side 0.4s linear";
-  }, 400);
+    bannerContent.style.animation = "slide-right-left-side 0.7s ease";
+  }, 300);
 }
 
 function checkSlideNumber(event) {
-  console.log(event);
   if (
     slide == 1 ||
     event.target.parentElement.id == "block-pagination-item1" ||
-    event.target.id == "block-pagination-item1"
+    event.target.id == "block-pagination-item1" ||
+    event.target.id == "dot-pagination-item1"
   ) {
+    console.log(slide);
     slide = 1;
     advantageText1.innerText =
       "Опираемся на стандарты, нормативы и реальную практику эксплуатации";
@@ -54,14 +57,20 @@ function checkSlideNumber(event) {
     blockPaginationItemsArray.forEach((el) => {
       el.className = "block-pagination-item";
     });
+    dotPaginationItemsArray.forEach((el) => {
+      el.className = "dot-pagination-item";
+    });
     blockPaginationItemsArray[0].className = "pagination-active";
+    dotPaginationItemsArray[0].className = "dot-pagination-active";
     slideImage.style.marginBottom = "0";
+    dotPaginationContainer.style.marginTop = "3rem";
   }
 
   if (
     slide == 2 ||
     event.target.parentElement.id == "block-pagination-item2" ||
-    event.target.id == "block-pagination-item2"
+    event.target.id == "block-pagination-item2" ||
+    event.target.id == "dot-pagination-item2"
   ) {
     slide = 2;
     advantageText1.innerText =
@@ -79,12 +88,18 @@ function checkSlideNumber(event) {
     blockPaginationItemsArray.forEach((el) => {
       el.className = "block-pagination-item";
     });
+    dotPaginationItemsArray.forEach((el) => {
+      el.className = "dot-pagination-item";
+    });
+    dotPaginationItemsArray[1].className = "dot-pagination-active";
     blockPaginationItemsArray[1].className = "pagination-active";
+    dotPaginationContainer.style.marginTop = "7.9rem";
   }
   if (
     slide == 3 ||
     event.target.parentElement.id == "block-pagination-item3" ||
-    event.target.id == "block-pagination-item3"
+    event.target.id == "block-pagination-item3" ||
+    event.target.id == "dot-pagination-item3"
   ) {
     slide = 3;
     advantageText1.innerText = "Организуем бесплатную доставку в Пермь";
@@ -100,12 +115,18 @@ function checkSlideNumber(event) {
     blockPaginationItemsArray.forEach((el) => {
       el.className = "block-pagination-item";
     });
+    dotPaginationItemsArray.forEach((el) => {
+      el.className = "dot-pagination-item";
+    });
+    dotPaginationItemsArray[2].className = "dot-pagination-active";
     blockPaginationItemsArray[2].className = "pagination-active";
+    dotPaginationContainer.style.marginTop = "13rem";
   }
   if (
     slide == 4 ||
     event.target.parentElement.id == "block-pagination-item4" ||
-    event.target.id == "block-pagination-item4"
+    event.target.id == "block-pagination-item4" ||
+    event.target.id == "dot-pagination-item4"
   ) {
     slide = 4;
     advantageText1.innerText = "Отвечаем за груз, пока он не будет доставлен";
@@ -120,11 +141,17 @@ function checkSlideNumber(event) {
     blockPaginationItemsArray.forEach((el) => {
       el.className = "block-pagination-item";
     });
+    dotPaginationItemsArray.forEach((el) => {
+      el.className = "dot-pagination-item";
+    });
+    dotPaginationItemsArray[3].className = "dot-pagination-active";
     blockPaginationItemsArray[3].className = "pagination-active";
     slideImage.style.marginBottom = "1.85rem";
+    dotPaginationContainer.style.marginTop = "10.7rem";
+    console.log(slide);
   }
 
-  if (slide == 0) {
+  if (slide <= 0) {
     slide = 4;
     advantageText1.innerText = "Отвечаем за груз, пока он не будет доставлен";
     advantageText2.innerText = "Выдерживаем обозначенные сроки поставки";
@@ -138,8 +165,12 @@ function checkSlideNumber(event) {
     blockPaginationItemsArray.forEach((el) => {
       el.className = "block-pagination-item";
     });
+    dotPaginationItemsArray.forEach((el) => {
+      el.className = "dot-pagination-item";
+    });
     blockPaginationItemsArray[3].className = "pagination-active";
     slideImage.style.marginBottom = "1.85rem";
+    dotPaginationItemsArray[3].className = "dot-pagination-active";
   } else if (slide == 5) {
     slide = 1;
     advantageText1.innerText =
@@ -158,8 +189,13 @@ function checkSlideNumber(event) {
     blockPaginationItemsArray.forEach((el) => {
       el.className = "block-pagination-item";
     });
+    dotPaginationItemsArray.forEach((el) => {
+      el.className = "dot-pagination-item";
+    });
     blockPaginationItemsArray[0].className = "pagination-active";
     slideImage.style.marginBottom = "0";
+    dotPaginationItemsArray[0].className = "dot-pagination-active";
+    dotPaginationContainer.style.marginTop = "3rem";
   }
 }
 
@@ -175,3 +211,26 @@ blockPaginationItemsArray.forEach((element) => {
     playSlideAnimation(event);
   };
 });
+dotPaginationItemsArray.forEach((element) => {
+  element.onclick = function (event) {
+    playSlideAnimation(event);
+  };
+});
+
+// Swipe effect
+let startingX, startingY, movingX, movingY;
+function touchStart(evt) {
+  startingX = evt.touches[0].clientX;
+  startingY = evt.touches[0].clientY;
+}
+function touchMove(evt) {
+  movingX = evt.touches[0].clientX;
+  movingY = evt.touches[0].clientY;
+}
+function touchEnd() {
+  if (startingX + 100 < movingX) {
+    previousSlide(event);
+  } else if (startingX - 100 > movingX) {
+    nextSlide(event);
+  }
+}

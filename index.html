@@ -8,7 +8,11 @@
 
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
+  <body
+    ontouchstart="touchStart(event)"
+    ontouchmove="touchMove(event)"
+    ontouchend="touchEnd()"
+  >
     <div class="slider">
       <div class="arrow-navigation">
         <div class="arrow-back arrow"></div>
@@ -19,6 +23,7 @@
         <img
           class="image"
           src="https://perm.teploprofi.com/www/images/img_carousel_1_2.png"
+          alt="img"
         />
 
         <div class="slide-number-container container">
@@ -61,6 +66,13 @@
         <div class="block-pagination-item" id="block-pagination-item4">
           <p class="block-pagination-title">Надёжная поставка</p>
         </div>
+      </div>
+      <!-- Dot pagination -->
+      <div class="dot-pagination">
+        <div class="dot-pagination-item" id="dot-pagination-item1"></div>
+        <div class="dot-pagination-item" id="dot-pagination-item2"></div>
+        <div class="dot-pagination-item" id="dot-pagination-item3"></div>
+        <div class="dot-pagination-item" id="dot-pagination-item4"></div>
       </div>
     </div>
 
