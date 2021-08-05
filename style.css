@@ -149,8 +149,8 @@ body {
 }
 
 .dot-pagination-item {
-  width: 35px;
-  height: 35px;
+  width: 25px;
+  height: 25px;
   border: 3px solid black;
   border-radius: 50%;
 }
@@ -161,8 +161,8 @@ body {
 }
 .dot-pagination-active {
   background: black;
-  width: 35px;
-  height: 35px;
+  width: 25px;
+  height: 25px;
   border: 3px solid black;
   border-radius: 50%;
 }
@@ -175,32 +175,53 @@ body {
     display: none;
   }
   .row {
-    margin: 1rem 2rem 0 2rem;
+    margin: 1rem 1rem 0 1rem;
   }
   .advantage-list-item {
-    font-size: 28px;
+    font-size: 17px;
   }
   .slider-title {
-    font-size: xx-large;
+    font-size: x-large;
   }
   .dot-pagination {
     display: flex;
   }
-  .slider {
+  .advantages {
+    margin: 0;
+  }
+  .slider-title {
+    width: fit-content;
   }
 }
 
 @keyframes slide-right {
   from {
-    transform: translateX(10%);
+    transform: translateX(0%);
   }
   to {
-    transform: translateX(120%);
+    transform: translateX(100%);
   }
 }
 @keyframes slide-right-left-side {
   from {
-    transform: translateX(-120%);
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-left {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+@keyframes slide-left-right-side {
+  from {
+    transform: translateX(100%);
   }
   to {
     transform: translateX(0);

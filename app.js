@@ -12,6 +12,7 @@ let blockPaginationItemsArray = document.querySelectorAll(
 );
 let dotPaginationItemsArray = document.querySelectorAll(".dot-pagination-item");
 let dotPaginationContainer = document.querySelector(".dot-pagination");
+let body = document.body;
 
 let slide = 1;
 function nextSlide(event) {
@@ -20,7 +21,7 @@ function nextSlide(event) {
 }
 function previousSlide(event) {
   slide--;
-  playSlideAnimation(event);
+  playSlideAnimationLeft(event);
 }
 
 function playSlideAnimation(event) {
@@ -29,6 +30,14 @@ function playSlideAnimation(event) {
   setTimeout(() => {
     checkSlideNumber(event);
     bannerContent.style.animation = "slide-right-left-side 0.7s ease";
+  }, 300);
+}
+function playSlideAnimationLeft(event) {
+  bannerContent.style.animation = "slide-left 0.7s ease";
+
+  setTimeout(() => {
+    checkSlideNumber(event);
+    bannerContent.style.animation = "slide-left-right-side 0.7s ease";
   }, 300);
 }
 
@@ -93,7 +102,7 @@ function checkSlideNumber(event) {
     });
     dotPaginationItemsArray[1].className = "dot-pagination-active";
     blockPaginationItemsArray[1].className = "pagination-active";
-    dotPaginationContainer.style.marginTop = "7.9rem";
+    dotPaginationContainer.style.marginTop = "4.45rem";
   }
   if (
     slide == 3 ||
@@ -120,7 +129,7 @@ function checkSlideNumber(event) {
     });
     dotPaginationItemsArray[2].className = "dot-pagination-active";
     blockPaginationItemsArray[2].className = "pagination-active";
-    dotPaginationContainer.style.marginTop = "13rem";
+    dotPaginationContainer.style.marginTop = "7.95rem";
   }
   if (
     slide == 4 ||
@@ -147,8 +156,9 @@ function checkSlideNumber(event) {
     dotPaginationItemsArray[3].className = "dot-pagination-active";
     blockPaginationItemsArray[3].className = "pagination-active";
     slideImage.style.marginBottom = "1.85rem";
-    dotPaginationContainer.style.marginTop = "10.7rem";
-    console.log(slide);
+    dotPaginationContainer.style.marginTop = "9.4rem";
+    dotPaginationContainer.style.width = "458px";
+    console.dir(dotPaginationContainer);
   }
 
   if (slide <= 0) {
@@ -171,6 +181,7 @@ function checkSlideNumber(event) {
     blockPaginationItemsArray[3].className = "pagination-active";
     slideImage.style.marginBottom = "1.85rem";
     dotPaginationItemsArray[3].className = "dot-pagination-active";
+    dotPaginationContainer.style.marginTop = "10.7rem";
   } else if (slide == 5) {
     slide = 1;
     advantageText1.innerText =
@@ -227,9 +238,12 @@ function touchMove(evt) {
   movingY = evt.touches[0].clientY;
 }
 function touchEnd() {
-  if (startingX + 100 < movingX) {
+  if (startingX + 200 < movingX) {
+    console.log(event);
     previousSlide(event);
-  } else if (startingX - 100 > movingX) {
+  } else if (startingX - 200 > movingX) {
+    console.log(event);
+
     nextSlide(event);
   }
 }
