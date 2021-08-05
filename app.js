@@ -217,7 +217,6 @@ dotPaginationItemsArray.forEach((element) => {
   };
 });
 
-// Swipe effect
 let startingX, startingY, movingX, movingY;
 function touchStart(evt) {
   startingX = evt.touches[0].clientX;

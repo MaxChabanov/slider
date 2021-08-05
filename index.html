@@ -8,17 +8,18 @@
 
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body
-    ontouchstart="touchStart(event)"
-    ontouchmove="touchMove(event)"
-    ontouchend="touchEnd()"
-  >
+  <body>
     <div class="slider">
       <div class="arrow-navigation">
         <div class="arrow-back arrow"></div>
         <div class="arrow-forward arrow"></div>
       </div>
-      <div class="row">
+      <div
+        class="row"
+        ontouchstart="touchStart(event)"
+        ontouchmove="touchMove(event)"
+        ontouchend="touchEnd()"
+      >
         <!-- Banner-content -->
         <img
           class="image"
