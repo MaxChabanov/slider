@@ -388,11 +388,11 @@ function touchMove(evt) {
   movingY = evt.touches[0].clientY;
 }
 function touchEnd() {
-  if (startingX + 200 < movingX) {
+  if (startingX + 100 < movingX) {
     slide--;
     playSlideAnimation(event);
     checkSlideNumber(event);
-  } else if (startingX - 200 > movingX) {
+  } else if (startingX - 100 > movingX) {
     slide++;
     playSlideAnimationLeft(event);
     checkSlideNumber(event);
